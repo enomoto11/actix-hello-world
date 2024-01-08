@@ -17,11 +17,15 @@ impl Server {
         };
     }
 
-    pub fn get_host(&self) -> Ipv4Addr {
-        return self.host;
-    }
+    // pub fn get_host(&self) -> Ipv4Addr {
+    //     return self.host;
+    // }
 
-    pub fn get_port(&self) -> u16 {
-        return self.port;
+    // pub fn get_port(&self) -> u16 {
+    //     return self.port;
+    // }
+
+    pub fn get_address(&self) -> String {
+        return format!("{}:{}", self.host, self.port);
     }
 }

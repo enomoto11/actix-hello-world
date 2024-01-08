@@ -4,7 +4,7 @@ mod controller;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    let config = config::Server::new();
+    let server_address = config::Server::new().get_address();
 
     return HttpServer::new(|| {
         App::new()
@@ -12,7 +12,7 @@ async fn main() -> std::io::Result<()> {
             .service(controller::echo)
             .route("/hey", web::get().to(controller::manual_hello))
     })
-    .bind((config.get_host(), config.get_port()))?
+    .bind(server_address)?
     .run()
     .await;
 }

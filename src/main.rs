@@ -16,6 +16,7 @@ async fn main() -> std::io::Result<()> {
 }
 
 mod server_config {
+    use dotenv::dotenv;
     use std::env;
     use std::io::Error;
     use std::net::Ipv4Addr;
@@ -26,6 +27,7 @@ mod server_config {
     }
 
     pub fn new() -> ServerConfig {
+        dotenv().ok();
         // FIXME: 上位環境ごとに設定を変える
         let localhost: Ipv4Addr = Ipv4Addr::new(127, 0, 0, 1);
         let port = get_port().unwrap();
